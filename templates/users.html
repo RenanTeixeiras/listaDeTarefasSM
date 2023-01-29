@@ -1,0 +1,12 @@
+{% for user in users %}
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">  
+        {{ user.nome }}<br><br>
+        {{ user.id }}<br><br>
+        {{ user.email }}<br><br>
+        {{ user.senha }}<br><br>
+    </li>
+    <a href="{{ url_for('deletar_usuario', id=user.id) }}">Deletar</a>
+</ul>
+<p>Voltar para <a href="{{ url_for('tarefas') }}">TAREFAS</a></p>
+{% endfor %}

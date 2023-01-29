@@ -18,14 +18,28 @@
         <label for="ALTA">BAIXA</label>
         <input type="submit" value="Cadastrar Tarefa">
     </form> 
+    <br><br><br><br><br>
+    <table border="1">
+        <tr>
+            <th>ID da Tarefa</th>
+            <th>Titulo da Tarefa</th>
+            <th>Hora de Registro</th>
+            <th>Prazo de Finaização</th>
+            <th>Grau de Prioridade</th>
+        </tr>
         {% for tarefa in tasks %}
-        <ul>
-            <li>  
-                {{ tarefa.id_tarefa }} | {{ tarefa.titulo_tarefa }}  | {{ tarefa.hora_tarefa }}  | {{ tarefa.prazo_tarefa }} | {{ tarefa.prioridade }}<br><br>
-                    <input type="checkbox" name='feito' id = "feito" value="{{ tarefa.id_tarefa }}">
-                    <a href="{{ url_for('deletar_tarefa', id=tarefa.id_tarefa) }}">Deletar</a>
-            </li>
-        </ul>
+        <tr>
+            <td>{{ tarefa.id_tarefa }}</td>
+            <td>{{ tarefa.titulo_tarefa }}</td>
+            <td>{{ tarefa.hora_tarefa }}</td>
+            <td>{{ tarefa.prazo_tarefa }}</td>
+            <td>{{ tarefa.prioridade }}</td>
+            <td><a href="{{ url_for('deletar_tarefa', id=tarefa.id_tarefa) }}" style="text-decoration: none;">[]</a></td>
+        </tr>
         {% endfor %}
+    </table>
+    <br><br>
+    <a href="{{ url_for('logout') }}">LOGOUT</a><p>Administrar <a href="{{ url_for('usuarios') }}">USUÁRIOS</a></p>
+
 </body>
 </html>
