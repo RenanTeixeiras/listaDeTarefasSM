@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="´t-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{ url_for('tarefas') }}" method="POST">
+        <input type="text" name="Tarefa" placeholder="Tarefa: ">
+        <input type="datetime" name="Prazo" placeholder="Prazo">
+        <input type="radio" name="Prioridade" value="ALTA">
+        <label for="ALTA">ALTA</label>
+        <input type="radio" name="Prioridade" value="MÉDIA">
+        <label for="ALTA">MÉDIA</label>
+        <input type="radio" name="Prioridade" value="BAIXA">
+        <label for="ALTA">BAIXA</label>
+        <input type="submit" value="Cadastrar Tarefa">
+    </form> 
+        {% for tarefa in tasks %}
+        <ul>
+            <li>  
+                {{ tarefa.id_tarefa }} | {{ tarefa.titulo_tarefa }}  | {{ tarefa.hora_tarefa }}  | {{ tarefa.prazo_tarefa }} | {{ tarefa.prioridade }}<br><br>
+                    <input type="checkbox" name='feito' id = "feito" value="{{ tarefa.id_tarefa }}">
+                    <a href="{{ url_for('deletar_tarefa', id=tarefa.id_tarefa) }}">Deletar</a>
+            </li>
+        </ul>
+        {% endfor %}
+</body>
+</html>
